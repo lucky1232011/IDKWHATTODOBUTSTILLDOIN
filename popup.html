@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Discovery</title>
+  <link rel="stylesheet" href="src/popup.css">
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">Y</div>
+      <div><p class="eyebrow">YOUR YOUTUBE LENS</p><h1>Discovery</h1></div>
+      <span class="local-badge">PRIVATE BY DEFAULT</span>
+    </header>
+
+    <section class="intro">
+      <p>Make YouTube’s homepage fit what <em>you</em> want to watch. Screen recommendation cards for topic fit and content patterns.</p>
+      <div id="videoIdentity" class="video-identity">Open a YouTube video to begin.</div>
+    </section>
+
+    <section class="preferences card">
+      <div class="section-heading"><div><p class="eyebrow">PERSONALIZE</p><h2>Your preferences</h2></div><button id="savePrefs" class="text-button" type="button">Save</button></div>
+      <label for="likes">I’m interested in</label>
+      <input id="likes" type="text" placeholder="e.g. thoughtful gaming analysis, small tech creators">
+      <label for="avoids">Avoid or down-rank</label>
+      <input id="avoids" type="text" placeholder="e.g. generic advice, fake drama">
+      <label for="excludes">Strict exclusions <span>(always filtered)</span></label>
+      <input id="excludes" type="text" placeholder="e.g. spoilers, cryptocurrency">
+      <label class="check home-filter"><input id="filterHome" type="checkbox"><span>Filter homepage recommendations automatically</span></label>
+      <div class="toggles">
+        <label class="check"><input id="avoidClickbait" type="checkbox"><span>Avoid misleading titles</span></label>
+        <label class="check"><input id="avoidRagebait" type="checkbox"><span>Avoid outrage-focused content</span></label>
+        <label class="check"><input id="avoidGeneric" type="checkbox"><span>Avoid generic advice</span></label>
+      </div>
+    </section>
+
+    <button id="analyze" class="primary" type="button">Analyze this video <span aria-hidden="true">↗</span></button>
+    <p class="privacy-note">Video title, description, and any visible transcript are sent to your local service and configured AI provider for classification. Your preferences stay in this browser.</p>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <div class="match-card card">
+        <div class="match-top"><div><p class="eyebrow">PERSONAL MATCH</p><div id="matchValue" class="match-value">—</div></div><span id="matchStatus" class="match-status"></span></div>
+        <p id="matchExplanation" class="explanation"></p>
+      </div>
+      <div class="card"><p class="eyebrow">CONTENT PATTERNS</p><div id="labels" class="chips"></div><p id="evidence" class="evidence"></p></div>
+      <div class="feedback"><span>Was this useful?</span><button data-feedback="relevant" type="button">More like this</button><button data-feedback="not-relevant" type="button">Less like this</button></div>
+    </section>
+
+    <footer>Homepage recommendation filter · YouTube Discovery MVP</footer>
+    <details class="vision-easter-egg">
+      <summary>renderer-state.html</summary>
+      <a href="src/renderer-state.html" target="_blank" rel="noreferrer">Open file ↗</a>
+    </details>
+  </main>
+  <script src="src/recommendation.js"></script>
+  <script src="src/popup.js"></script>
+</body>
+</html>

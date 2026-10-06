@@ -1,0 +1,9 @@
+{
+  "name": "youtube-discovery-extension",
+  "version": "0.2.0",
+  "private": true,
+  "description": "AI-assisted YouTube video analysis and local preference matching Chrome extension",
+  "scripts": { "start": "node server/index.js", "test": "node --test" },
+  "engines": { "node": ">=20" }
+}
+

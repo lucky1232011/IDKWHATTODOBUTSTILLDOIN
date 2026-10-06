@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d11">
+  <title>Renderer State</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      background: #090d11;
+      color: #e7edf1;
+      font-synthesis: none;
+      --muted: #9aa8b2;
+      --line: #26323a;
+      --accent: #77e0bd;
+      --panel: #111920;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(ellipse at 50% -18%, #164238 0, transparent 42rem),
+        #090d11;
+      line-height: 1.65;
+    }
+    .page { width: min(900px, calc(100% - 40px)); margin: 0 auto; padding: 42px 0 68px; }
+    .topline { display:flex; justify-content:space-between; gap:20px; color:var(--muted); font:600 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .signal { color:var(--accent); }
+    .hero { padding:72px 0 48px; border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--accent); font:650 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { max-width:760px; margin:16px 0; font-size:clamp(42px, 8vw, 76px); line-height:1.02; letter-spacing:-.055em; font-weight:720; }
+    .lede { max-width:680px; margin:0; color:#bac5cc; font-size:clamp(17px, 2.5vw, 21px); }
+    h2 { margin:0 0 14px; font-size:23px; letter-spacing:-.025em; }
+    h3 { margin:0 0 8px; font-size:16px; }
+    p { margin:0; }
+    section { padding:38px 0; border-bottom:1px solid var(--line); }
+    .idea { max-width:730px; color:#c1cbd1; }
+    .steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:20px; }
+    .step { min-height:170px; padding:20px; border:1px solid var(--line); border-radius:12px; background:linear-gradient(145deg,#131d23,#0e1419); }
+    .num { display:block; margin-bottom:22px; color:var(--accent); font:600 12px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .step p,.goal-copy { color:#aebac2; font-size:14px; }
+    .principles { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; padding:0; margin:20px 0 0; list-style:none; }
+    .principles li { padding:17px 0; border-top:1px solid var(--line); color:#b5c0c7; font-size:14px; }
+    .principles strong { color:#edf2f4; }
+    .status-card { margin-top:20px; padding:22px; border:1px solid #31453f; border-radius:12px; background:#101b1a; color:#b9c7c7; }
+    .status-card p + p { margin-top:12px; }
+    .goal { padding-bottom:48px; }
+    .goal-copy { max-width:710px; font-size:16px; }
+    .closing { margin-top:24px; color:var(--accent); font-size:16px; font-weight:650; }
+    .credit { margin-top:42px; color:#798791; font:11px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    @media (max-width:620px) {
+      .page { width:min(100% - 28px, 900px); padding-top:24px; }
+      .hero { padding:54px 0 36px; }
+      .steps,.principles { grid-template-columns:1fr; }
+      .step { min-height:0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline"><span>Renderer state / 00.01</span><span class="signal">Status: in progress</span></div>
+    <header class="hero">
+      <p class="eyebrow">The Easter Egg · A work in progress</p>
+      <h1>A feed that feels like yours.</h1>
+      <p class="lede">You say what you like. It finds more of that, filters what you do not want, and fills the gaps with better videos.</p>
+    </header>
+
+    <section>
+      <p class="eyebrow">01 / The idea</p>
+      <h2>People like different things.</h2>
+      <p class="idea">A good video for one person can be boring or annoying to someone else. The user should choose what counts as interesting to them. This should feel like a better personal feed, not just another search box.</p>
+    </section>
+
+    <section>
+      <p class="eyebrow">02 / What it should do</p>
+      <div class="steps">
+        <article class="step"><span class="num">01</span><h3>Listen to the person</h3><p>Let people say what they enjoy and what they want less of in normal words. Someone might want engineering lessons, thoughtful gaming, or small creators—and someone else might want something completely different.</p></article>
+        <article class="step"><span class="num">02</span><h3>Find new things</h3><p>Do more than judge the videos already on screen. Help people discover good matches they might not have found by searching for the exact right words.</p></article>
+        <article class="step"><span class="num">03</span><h3>Filter with care</h3><p>Help reduce ragebait, misleading titles, repetitive low-effort videos, or other things the user chooses to avoid. A video is not bad just because AI helped make it. If there is not enough evidence, do not pretend to know.</p></article>
+        <article class="step"><span class="num">04</span><h3>Fill the gaps</h3><p>When an unwanted video, ad, or Short is removed, show a useful match in its place when one is available. The page should not turn into giant empty holes.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">03 / How it should feel</p>
+      <h2>Helpful, quick, and under your control.</h2>
+      <ul class="principles">
+        <li><strong>Quick:</strong> make a fast first check from the title so people are not stuck waiting.</li>
+        <li><strong>Smarter when possible:</strong> use descriptions or captions when they are available to understand a video whose title is vague.</li>
+        <li><strong>Not a search clone:</strong> bring useful discoveries into the feed without making people search for every topic themselves.</li>
+        <li><strong>Clear:</strong> say why a video was shown or filtered, and admit when there is not enough information.</li>
+        <li><strong>User stays in charge:</strong> let people change their preferences, restore a video, or turn filtering off.</li>
+        <li><strong>Private by design:</strong> keep basic preferences on the person's device when possible, and explain clearly if any information is sent elsewhere.</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="eyebrow">04 / Where it is today</p>
+      <h2>A first sketch, not the finished thing.</h2>
+      <div class="status-card">
+        <p>The prototype is a first sketch. Right now its fast feed check mostly uses video titles, so it can miss a great match if the title is unclear.</p>
+        <p>In the future, it could use more of a video's words, like its description or captions when available. It should never act like it watched a video if it did not.</p>
+      </div>
+    </section>
+
+    <section class="goal">
+      <p class="eyebrow">05 / The bigger goal</p>
+      <h2>More videos you are glad you clicked.</h2>
+      <p class="goal-copy">Help each person spend less time wading through videos they do not want and more time finding ones they are glad they clicked. It should support the person's choices, not replace them.</p>
+      <p class="closing">Can you help complete the vision? Try it, improve it, and show me what you build. This prototype is only the first sketch.</p>
+      <p class="credit">Made with Codex by someone who was figuring it out as they went.</p>
+    </section>
+  </main>
+</body>
+</html>

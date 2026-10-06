@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Discovery — Feed Filter",
+  "version": "0.2.0",
+  "description": "Filter YouTube recommendations by your interests and avoid patterns.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "http://127.0.0.1:8787/*"
+  ],
+  "action": {
+    "default_title": "YouTube Discovery",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*"
+      ],
+      "js": [
+        "src/recommendation.js",
+        "src/content.js"
+      ],
+      "run_at": "document_idle",
+      "css": [
+        "src/home-filter.css"
+      ]
+    }
+  ]
+}
+
